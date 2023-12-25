@@ -88,7 +88,14 @@ node_modules/@deno/kv/esm/napi_based.js:34:31: ERROR: Top-level await is not ava
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
 ```
 
-* Solution1 (Top-level await is not available...)
+## Solutions
+
+### Top-level await is not available in the configured target environment ("chrome87", "edge88", "es2020", "firefox78", "safari14" + 2 overrides)
 
 You can work around this by installing the following packages  
 [vite-plugin-top-level-await](https://github.com/Menci/vite-plugin-top-level-await)
+
+### No loader is configured for ".node" files: node_modules/@deno/kv-win32-x64-msvc/deno-kv-napi.win32-x64-msvc.node
+
+Processes that should have been executed on the server side were being executed on the client side.
+This is not a issue.
